@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData/TowerTurretData")]
-public class TowerTurretData : ScriptableObject
+public class TowerTurretData : GameData
 {
     public float AttackRange;
     public float Damage;

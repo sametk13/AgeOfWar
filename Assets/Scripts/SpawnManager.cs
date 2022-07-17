@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static Action<SoldierData> OnSpawn;
+    public static Action<GameData> OnSpawn;
     public static UnityEvent OnSpawned;
     [SerializeField] Transform spawnTransform;
 
@@ -20,10 +20,10 @@ public class SpawnManager : MonoBehaviour
         OnSpawn -= Spawn;
     }
 
-    public void Spawn(SoldierData soldierData)
+    public void Spawn(GameData gameData)
     {
         OnSpawned?.Invoke();
-        Instantiate(soldierData.Prefab, spawnTransform.position, Quaternion.identity,spawnTransform);
-        Debug.Log(soldierData.name + " Spawned!!");
+        Instantiate(gameData.Prefab, spawnTransform.position, Quaternion.identity,spawnTransform);
+        Debug.Log(gameData.name + " Spawned!!");
     }
 }

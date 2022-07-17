@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109a8f41e450c584fafb8527626645ac, type: 3}
   m_Name: CavalryMan
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: d00cfa5a9fac108449ab5e5bc97b1f6f, type: 3}
+  Prefab: {fileID: 8239182099929247408, guid: 951227166dab28646a272f4573d3e78a, type: 3}
   Health: 0
   Damage: 0
   AttackRange: 0
-  Cost: 0
+  Cost: 100
   DeathRewardGold: 0
   SpawnDelayTime: 0

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109a8f41e450c584fafb8527626645ac, type: 3}
   m_Name: Mele
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5866847430461687184, guid: bfeceecf26afdf14388c115fdc7de956, type: 3}
+  sprite: {fileID: 21300000, guid: 753288a0fab4037479caea0595907426, type: 3}
+  Prefab: {fileID: 8239182099929247408, guid: ce0ae397c105e5d42adb5eaaaa1aa244, type: 3}
   Health: 50
   Damage: 10
   AttackRange: 3
-  Cost: 50
+  Cost: 25
   DeathRewardGold: 60
   SpawnDelayTime: 1
