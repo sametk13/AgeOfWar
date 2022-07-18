@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StageManager : MonoBehaviour
 {
+    public static Action OnPassStage;
+
+
     public List<Stage> stages = new List<Stage>();
     int currentStageIndex;
 
@@ -11,10 +16,17 @@ public class StageManager : MonoBehaviour
     {
         Instance = this;
     }
-
     public void NextStage()
     {
-
+        if(currentStageIndex +1 <= stages.Count)
+        {
+            currentStageIndex ++;
+            OnPassStage.Invoke();
+        }
+        else
+        {
+            Debug.Log("Max Stage!!");
+        }
     }
 
     public Stage GetCurrentStage()
