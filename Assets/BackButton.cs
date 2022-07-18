@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
 {
-    public GameObject MarketButtons;
+    [HideInInspector]public GameObject MarketButtons;
     public void Back()
     {
         MarketButtons.SetActive(true);
