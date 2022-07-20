@@ -13,22 +13,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject backButtonCardPrefab;
 
     [SerializeField] GameObject SoldierGridLayout;
+    [SerializeField] GameObject TurretGridLayout;
 
 
     private void Start()
     {
         ShowSoldierGridLayoutItems();
+        ShowTurretGridLayoutItems();
     }
 
     private void OnEnable()
     {
         StageManager.OnPassStage += ShowSoldierGridLayoutItems;
-
+        StageManager.OnPassStage += ShowTurretGridLayoutItems;
     }
 
     private void OnDisable()
     {
         StageManager.OnPassStage -= ShowSoldierGridLayoutItems;
+        StageManager.OnPassStage -= ShowTurretGridLayoutItems;
 
     }
 
@@ -51,5 +54,22 @@ public class UIManager : MonoBehaviour
         backButtonCard.GetComponent<BackButton>().MarketButtons = marketButtons;
     }
 
+    void ShowTurretGridLayoutItems()
+    {
+        for (int i = 0; i < TurretGridLayout.transform.childCount; i++)
+        {
+            Destroy(TurretGridLayout.transform.GetChild(i).gameObject);
+        }
 
+        for (int i = 0; i < StageManager.Instance.GetCurrentStage().TowerTurrets.Count; i++)
+        {
+            TowerTurretData currentData = StageManager.Instance.GetCurrentStage().TowerTurrets[i];
+            GameObject currentCard = Instantiate(buttonCardPrefab, TurretGridLayout.transform);
+            currentCard.GetComponent<Image>().sprite = currentData.sprite;
+            currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "$";
+            currentCard.GetComponent<ItemButton>().gameData = currentData;
+        }
+        GameObject backButtonCard = Instantiate(backButtonCardPrefab, TurretGridLayout.transform);
+        backButtonCard.GetComponent<BackButton>().MarketButtons = marketButtons;
+    }
 }

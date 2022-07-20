@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d47dd2a7f97bc4428fde46eee506e9b, type: 3}
   m_Name: StandartTurret
   m_EditorClassIdentifier: 
-  AttackRange: 0
-  Damage: 0
-  Cost: 0
-  SellCost: 0
-  AttackCooldown: 0
+  sprite: {fileID: 21300000, guid: d00cfa5a9fac108449ab5e5bc97b1f6f, type: 3}
+  Prefab: {fileID: 0}
+  AttackRange: 15
+  Damage: 10
+  Cost: 300
+  SellCost: 150
+  AttackCooldown: 4
