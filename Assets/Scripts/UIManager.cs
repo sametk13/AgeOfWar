@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject buttonCardPrefab;
+    [SerializeField] GameObject turretCardPrefab;
+
     [SerializeField] GameObject marketButtons;
     [SerializeField] GameObject backButtonCardPrefab;
 
@@ -64,10 +66,10 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < StageManager.Instance.GetCurrentStage().TowerTurrets.Count; i++)
         {
             TowerTurretData currentData = StageManager.Instance.GetCurrentStage().TowerTurrets[i];
-            GameObject currentCard = Instantiate(buttonCardPrefab, TurretGridLayout.transform);
+            GameObject currentCard = Instantiate(turretCardPrefab, TurretGridLayout.transform);
             currentCard.GetComponent<Image>().sprite = currentData.sprite;
             currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "$";
-            currentCard.GetComponent<ItemButton>().gameData = currentData;
+            currentCard.GetComponent<DragDrop>().gameData = currentData;
         }
         GameObject backButtonCard = Instantiate(backButtonCardPrefab, TurretGridLayout.transform);
         backButtonCard.GetComponent<BackButton>().MarketButtons = marketButtons;

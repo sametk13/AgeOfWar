@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     public void Spawn(GameData gameData)
     {
         OnSpawned?.Invoke();
-        Instantiate(gameData.Prefab, spawnTransform.position, Quaternion.identity,spawnTransform);
+        Instantiate(gameData.Prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
         Debug.Log(gameData.name + " Spawned!!");
     }
 }
