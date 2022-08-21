@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ItemButton : MonoBehaviour
 {
-    public GameData gameData;
+    public SoldierData soldierData;
 
     public void SpawnItem()
     {
-        SpawnManager.OnSpawn.Invoke(gameData);
+        SpawnManager.OnSpawn.Invoke(soldierData);
     }
 
 }

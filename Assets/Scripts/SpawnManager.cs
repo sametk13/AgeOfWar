@@ -1,14 +1,18 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static Action<GameData> OnSpawn;
+    public static Action<SoldierData> OnSpawn;
     public static UnityEvent OnSpawned;
     [SerializeField] Transform spawnTransform;
+    [SerializeField] Image fillImage;
+
 
     private void OnEnable()
     {
@@ -20,10 +24,32 @@ public class SpawnManager : MonoBehaviour
         OnSpawn -= Spawn;
     }
 
-    public void Spawn(GameData gameData)
+    public void Spawn(SoldierData soldierData)
+    {
+        StartCoolDown(soldierData);
+    }
+
+    public void StartCoolDown(SoldierData soldierData)
+    {
+        float fillValue = 0f;
+
+        DOTween.To(() => fillValue, x => fillValue = x, 1f, soldierData.SpawnDelayTime).SetEase(Ease.Linear)
+            .OnUpdate(() =>
+            {
+                Debug.Log(fillValue);
+                fillImage.fillAmount = fillValue;
+            }).OnComplete(() =>
+            {
+                fillImage.fillAmount = 0;
+
+                SpawnSoldier(soldierData);
+            });
+    }
+
+    void SpawnSoldier(SoldierData soldierData)
     {
         OnSpawned?.Invoke();
-        Instantiate(gameData.Prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
-        Debug.Log(gameData.name + " Spawned!!");
+        Instantiate(soldierData.Prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
+        Debug.Log(soldierData.name + " Spawned!!");
     }
 }

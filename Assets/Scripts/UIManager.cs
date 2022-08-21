@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
             GameObject currentCard = Instantiate(buttonCardPrefab, SoldierGridLayout.transform);
             currentCard.GetComponent<Image>().sprite = currentData.sprite;
             currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "$";
-            currentCard.GetComponent<ItemButton>().gameData = currentData;
+            currentCard.GetComponent<ItemButton>().soldierData = currentData;
         }
         GameObject backButtonCard = Instantiate(backButtonCardPrefab, SoldierGridLayout.transform);
         backButtonCard.GetComponent<BackButton>().MarketButtons = marketButtons;
