@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour
 {
     public bool isEmpty = true;
-    [SerializeField] Transform spawnPos;
+    public Transform spawnPos;
 
     public void SpawnTurret(GameData gameData)
     {
