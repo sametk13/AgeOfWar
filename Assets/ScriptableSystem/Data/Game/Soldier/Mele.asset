@@ -19,4 +19,4 @@ MonoBehaviour:
   AttackRange: 3
   Cost: 25
   DeathRewardGold: 60
-  SpawnDelayTime: 6
+  SpawnDelayTime: 0

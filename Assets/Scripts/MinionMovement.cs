@@ -8,8 +8,11 @@ public class MinionMovement : MonoBehaviour
     [SerializeField] float checkRange = 1.5f;
     [SerializeField] Transform checkRaycastTransform;
 
+    float defaultSpeed;
+
     private void Start()
     {
+        defaultSpeed = speed;
         Vector3 newRotate = transform.TransformDirection(0, 90, 0);
         transform.rotation = Quaternion.Euler(newRotate);
     }
@@ -36,12 +39,33 @@ public class MinionMovement : MonoBehaviour
         {
             Debug.DrawRay(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             return true;
+
         }
         else
         {
             Debug.DrawRay(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward) * checkRange, Color.green);
             return false;
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Soldier"))
+        {
+            if (SoldierManager.Instance.GetSoldierIndex(gameObject) < SoldierManager.Instance.GetSoldierIndex(other.gameObject))
+            {
+                speed = defaultSpeed;
+            }
+            else
+            {
+                speed = 0f;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        speed = defaultSpeed;
     }
 
 }
