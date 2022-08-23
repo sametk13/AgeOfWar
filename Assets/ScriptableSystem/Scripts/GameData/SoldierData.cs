@@ -8,7 +8,7 @@ public class SoldierData : GameData
     public float Health;
     public float Damage;
     public float AttackRange;
-    public float Cost;
-    public float DeathRewardGold;
+    public int Cost;
+    public int DeathRewardGold;
     public float SpawnDelayTime;
 }

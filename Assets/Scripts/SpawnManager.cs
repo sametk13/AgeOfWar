@@ -6,35 +6,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : Spawn
 {
-    public static Action<SoldierData> OnSpawn;
-    public static UnityEvent OnSpawned;
-    [SerializeField] Transform spawnTransform;
-    [SerializeField] Image fillImage;
-
     [SerializeField] Image currentSpawnedSoldier;
-
+    [SerializeField] Image fillImage;
     [SerializeField] List<Image> spawnSoldierImageList = new List<Image>();
-    [SerializeField] List<SoldierData> spawnSoldierQueue = new List<SoldierData>();
-    [SerializeField] int instantMaxSpawnQueue = 7;
 
-    bool isSpawnerWorking = false;
     private void Awake()
     {
         currentSpawnedSoldier.color = new Color(1, 1, 1, 0);
     }
-    private void OnEnable()
+
+    public override void SpawnSoldier(SoldierData soldierData)
     {
-        OnSpawn += Spawn;
+        OnSpawned?.Invoke();
+        GameObject newSoldier = Instantiate(soldierData.Prefab, spawnTransform.position, Quaternion.Euler(new Vector3(0, 90, 0)), spawnTransform);
+        SoldierManager.Instance.AddSoldierToList(newSoldier);
+        Debug.Log(soldierData.name + " Spawned!!");
     }
 
-    private void OnDisable()
-    {
-        OnSpawn -= Spawn;
-    }
-
-    public void Spawn(SoldierData soldierData)
+    public override void StartSpawn(SoldierData soldierData)
     {
         if (spawnSoldierQueue.Count < instantMaxSpawnQueue)
         {
@@ -42,9 +33,10 @@ public class SpawnManager : MonoBehaviour
             SpawnedSoldierSpriteUpdater(spawnSoldierQueue[0]);
         }
         StartCoroutine(StartSpawnQueue());
+
     }
 
-    IEnumerator StartSpawnQueue()
+   public override IEnumerator StartSpawnQueue()
     {
         if (isSpawnerWorking == true) yield break;
 
@@ -61,7 +53,7 @@ public class SpawnManager : MonoBehaviour
             DOTween.To(() => fillValue, x => fillValue = x, 1f, soldierData.SpawnDelayTime).SetEase(Ease.Linear)
                 .OnUpdate(() =>
                 {
-                    Debug.Log(fillValue);
+                    //Debug.Log(fillValue);
                     fillImage.fillAmount = fillValue;
                 }).OnComplete(() =>
                 {
@@ -78,13 +70,6 @@ public class SpawnManager : MonoBehaviour
         isSpawnerWorking = false;
     }
 
-    void SpawnSoldier(SoldierData soldierData)
-    {
-        OnSpawned?.Invoke();
-        GameObject newSoldier = Instantiate(soldierData.Prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
-        SoldierManager.Instance.AddSoldierToList(newSoldier);
-        Debug.Log(soldierData.name + " Spawned!!");
-    }
 
     void SpawnedSoldierSpriteUpdater(SoldierData soldierData)
     {

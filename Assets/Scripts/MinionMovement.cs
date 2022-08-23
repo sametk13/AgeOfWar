@@ -13,8 +13,6 @@ public class MinionMovement : MonoBehaviour
     private void Start()
     {
         defaultSpeed = speed;
-        Vector3 newRotate = transform.TransformDirection(0, 90, 0);
-        transform.rotation = Quaternion.Euler(newRotate);
     }
     private void Update()
     {

@@ -2,9 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class StageManager : Stage
+public class StageEnemy : Stage
 {
     public static Action OnPassStage;
 
@@ -14,10 +13,5 @@ public class StageManager : Stage
     }
 
 
-    public static StageManager Instance;
-
+    public static StageEnemy Instance;
 }
-
-
-
-
