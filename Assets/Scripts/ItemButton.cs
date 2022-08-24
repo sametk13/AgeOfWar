@@ -8,7 +8,8 @@ public class ItemButton : MonoBehaviour
 
     public void SpawnItem()
     {
-        SpawnManager.OnSpawn.Invoke(soldierData);
+        Debug.Log(SpawnManager.Instance.gameObject);
+        SpawnManager.Instance.StartSpawn(soldierData);
     }
 
 }

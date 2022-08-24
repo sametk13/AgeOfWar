@@ -5,7 +5,7 @@ using UnityEngine;
 public class MinionMovement : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
-    [SerializeField] float checkRange = 1.5f;
+    [SerializeField] float stopRange = 1.5f;
     [SerializeField] Transform checkRaycastTransform;
 
     float defaultSpeed;
@@ -33,7 +33,7 @@ public class MinionMovement : MonoBehaviour
         // Checking if enemy in front
         RaycastHit hit;
 
-        if (Physics.Raycast(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward), out hit, checkRange))
+        if (Physics.Raycast(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward), out hit, stopRange))
         {
             Debug.DrawRay(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             return true;
@@ -41,7 +41,7 @@ public class MinionMovement : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward) * checkRange, Color.green);
+            Debug.DrawRay(checkRaycastTransform.position, transform.TransformDirection(Vector3.forward) * stopRange, Color.green);
             return false;
         }
     }

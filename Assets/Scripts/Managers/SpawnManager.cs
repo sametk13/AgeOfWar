@@ -12,8 +12,12 @@ public class SpawnManager : Spawn
     [SerializeField] Image fillImage;
     [SerializeField] List<Image> spawnSoldierImageList = new List<Image>();
 
+    public static Spawn Instance;
+
+
     private void Awake()
     {
+        Instance = this;
         currentSpawnedSoldier.color = new Color(1, 1, 1, 0);
     }
 
@@ -21,6 +25,11 @@ public class SpawnManager : Spawn
     {
         OnSpawned?.Invoke();
         GameObject newSoldier = Instantiate(soldierData.Prefab, spawnTransform.position, Quaternion.Euler(new Vector3(0, 90, 0)), spawnTransform);
+
+        SoldierController soldierController = newSoldier.GetComponent<SoldierController>();
+        soldierController.soldierData = soldierData;
+        soldierController._base = Base.base1;
+
         SoldierManager.Instance.AddSoldierToList(newSoldier);
         Debug.Log(soldierData.name + " Spawned!!");
     }

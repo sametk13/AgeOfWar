@@ -9,7 +9,6 @@ public abstract class Spawn : MonoBehaviour
 {
     public List<SoldierData> spawnSoldierQueue;
 
-    public static Action<SoldierData> OnSpawn;
     public static UnityEvent OnSpawned;
 
     public Transform spawnTransform;
@@ -17,15 +16,7 @@ public abstract class Spawn : MonoBehaviour
 
     public bool isSpawnerWorking = false;
 
-    private void OnEnable()
-    {
-        OnSpawn += StartSpawn;
-    }
 
-    private void OnDisable()
-    {
-        OnSpawn -= StartSpawn;
-    }
 
     private void Awake()
     {
@@ -73,6 +64,7 @@ public abstract class Spawn : MonoBehaviour
 
         OnSpawned?.Invoke();
         GameObject newSoldier = Instantiate(soldierData.Prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
+        newSoldier.GetComponent<SoldierController>().soldierData = soldierData;
         SoldierManager.Instance.AddSoldierToList(newSoldier);
         Debug.Log(soldierData.name + " Spawned!!");
     }

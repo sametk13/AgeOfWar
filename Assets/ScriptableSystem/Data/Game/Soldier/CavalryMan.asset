@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d00cfa5a9fac108449ab5e5bc97b1f6f, type: 3}
   Prefab: {fileID: 8239182099929247408, guid: 951227166dab28646a272f4573d3e78a, type: 3}
-  Health: 0
-  Damage: 0
-  AttackRange: 0
+  Health: 100
+  Damage: 15
+  AttackRange: 3
+  AttackRate: 1
   Cost: 100
-  DeathRewardGold: 0
+  DeathRewardGold: 150
   SpawnDelayTime: 6

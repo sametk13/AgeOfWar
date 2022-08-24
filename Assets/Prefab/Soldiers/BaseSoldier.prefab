@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 8865994246915912722}
   - component: {fileID: 5809705139268341301}
   - component: {fileID: 3572323932330116623}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BaseSoldier
   m_TagString: Soldier
   m_Icon: {fileID: 0}
@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4cf09a90e0d17478b22e7b06023afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldierData: {fileID: 0}
+  Health: 0
 --- !u!136 &8865994246915912722
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  checkRange: 1.5
+  stopRange: 1.5
   checkRaycastTransform: {fileID: 6708300423299911670}
 --- !u!54 &3572323932330116623
 Rigidbody:

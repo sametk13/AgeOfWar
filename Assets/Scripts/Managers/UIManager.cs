@@ -17,7 +17,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject SoldierGridLayout;
     [SerializeField] GameObject TurretGridLayout;
 
+    [SerializeField] TextMeshProUGUI goldText;
 
+    public static UIManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         ShowSoldierGridLayoutItems();
@@ -36,6 +42,12 @@ public class UIManager : MonoBehaviour
         StageManager.OnPassStage -= ShowTurretGridLayoutItems;
 
     }
+
+    public void UpdateGoldText(int gold)
+    {
+        goldText.SetText("$" + gold);
+    }
+
 
     void ShowSoldierGridLayoutItems()
     {
