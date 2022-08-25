@@ -96,8 +96,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4578479006758832303, guid: 1ea3fe0182cfaa04bbc359c2feea3a36, type: 3}
     - {fileID: 9024509350443257487, guid: 1ea3fe0182cfaa04bbc359c2feea3a36, type: 3}
+    - {fileID: 4578479006758832303, guid: 1ea3fe0182cfaa04bbc359c2feea3a36, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ea3fe0182cfaa04bbc359c2feea3a36, type: 3}
 --- !u!1 &2182513800334350457 stripped
 GameObject:
@@ -128,4 +128,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4908ee9e6074f4f439f183d3ea4c9854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: eb3b8d450c111de44ace51e9569851eb, type: 2}
+  TurretData: {fileID: 0}
+  disabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}

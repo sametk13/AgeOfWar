@@ -8,11 +8,11 @@ public class ItemSlot : MonoBehaviour
     public bool isEmpty = true;
     public Transform spawnPos;
 
-    public void SpawnTurret(GameData gameData)
+    public void SpawnTurret(TowerTurretData turretData)
     {
         isEmpty = false;
-        Instantiate(gameData.Prefab, spawnPos);
-       
+        GameObject turret = Instantiate(turretData.Prefab, spawnPos);
+        turret.GetComponent<TurretController>().turretData = turretData;
         Debug.Log("Spawn Turret");
     }
 }

@@ -17,5 +17,5 @@ MonoBehaviour:
   AttackRange: 15
   Damage: 10
   Cost: 300
-  SellCost: 150
+  EarnedMoneyAmountAfterSell: 150
   AttackCooldown: 4

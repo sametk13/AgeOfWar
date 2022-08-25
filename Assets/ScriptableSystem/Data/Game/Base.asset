@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edb906468f68df418486b2e9c3107f9, type: 3}
   m_Name: Base
   m_EditorClassIdentifier: 
-  Health: 0
-  Level: 0
+  sprite: {fileID: 21300006, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  Prefab: {fileID: 0}
+  Health: 200
+  Level: 1

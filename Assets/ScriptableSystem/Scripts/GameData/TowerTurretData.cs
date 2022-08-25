@@ -7,7 +7,7 @@ public class TowerTurretData : GameData
 {
     public float AttackRange;
     public float Damage;
-    public float Cost;
-    public float SellCost;
+    public int Cost;
+    public int EarnedMoneyAmountAfterSell;
     public float AttackCooldown;
 }

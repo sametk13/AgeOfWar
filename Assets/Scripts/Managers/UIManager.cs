@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
             GameObject currentCard = Instantiate(turretCardPrefab, TurretGridLayout.transform);
             currentCard.GetComponent<Image>().sprite = currentData.sprite;
             currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "$";
-            currentCard.GetComponent<DragDrop>().gameData = currentData;
+            currentCard.GetComponent<DragDrop>().TurretData = currentData;
         }
         GameObject backButtonCard = Instantiate(backButtonCardPrefab, TurretGridLayout.transform);
         backButtonCard.GetComponent<BackButton>().MarketButtons = marketButtons;

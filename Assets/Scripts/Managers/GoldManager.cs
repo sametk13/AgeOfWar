@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GoldManager : GoldManagerBase
 {
+    public static GoldManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void OnEnable()
     {
         OnGoldUpdated += GoldUpdate;

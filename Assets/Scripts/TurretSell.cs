@@ -13,7 +13,7 @@ public class TurretSell : MonoBehaviour
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     [SerializeField] EventSystem m_EventSystem;
-
+    TowerTurretData currentData;
     private void Start()
     {
         //Fetch the Raycaster from the GameObject (the Canvas)
@@ -37,6 +37,7 @@ public class TurretSell : MonoBehaviour
                 {
                     turretStartPos = turretController.transform.position;
                     draggedTurret = turretController.transform;
+                    currentData = turretController.turretData;
                     Debug.Log("OnSelectedTurret");
 
                 }
@@ -80,6 +81,7 @@ public class TurretSell : MonoBehaviour
                 if (sellButon != null)
                 {
                     Debug.Log("Sell " + draggedTurret.name);
+                    GoldManager.Instance.IncreaseGold(currentData.EarnedMoneyAmountAfterSell);
                     itemSlot.isEmpty = true;
                     Destroy(draggedTurret.gameObject);
                     draggedTurret = null;
