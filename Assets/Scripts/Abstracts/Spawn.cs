@@ -16,21 +16,25 @@ public abstract class Spawn : MonoBehaviour
 
     public bool isSpawnerWorking = false;
 
-
+    Coroutine coroutine;
 
     private void Awake()
     {
         spawnSoldierQueue = new List<SoldierData>();
     }
 
-    public virtual void StartSpawn(SoldierData soldierData )
+    public virtual void StartSpawn(SoldierData soldierData)
     {
-        if (IsQueueEmtpty())
+        if (IsQueueEmtpty() && soldierData != null)
         {
 
             spawnSoldierQueue.Add(soldierData);
         }
-        StartCoroutine(StartSpawnQueue());
+
+        if (coroutine == null)
+        {
+            coroutine = StartCoroutine(StartSpawnQueue());
+        }
     }
 
     public virtual IEnumerator StartSpawnQueue()
@@ -46,6 +50,7 @@ public abstract class Spawn : MonoBehaviour
             bool isSpawn = false;
             float fillValue = 0f;
 
+            Debug.Log("soldier data: " + soldierData);
 
             DOTween.To(() => fillValue, x => fillValue = x, 1f, soldierData.SpawnDelayTime).SetEase(Ease.Linear)
             .OnComplete(() =>
@@ -57,6 +62,7 @@ public abstract class Spawn : MonoBehaviour
             yield return new WaitUntil(() => isSpawn == true);
         }
         isSpawnerWorking = false;
+        coroutine = null;
     }
 
     public virtual void SpawnSoldier(SoldierData soldierData)

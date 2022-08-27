@@ -17,11 +17,14 @@ public abstract class GoldManagerBase : MonoBehaviour
     {
         StartCoroutine(IERegularGoldEarned());
     }
-    public void IncreaseGold(int value)
+    public void IncreaseGold(int value, bool callAction = true)
     {
         Gold += value;
-        OnGoldIncreased?.Invoke(value);
-        OnGoldUpdated?.Invoke();
+        if (callAction)
+        {
+            OnGoldIncreased?.Invoke(value);
+            OnGoldUpdated?.Invoke();
+        }
     }
 
     public void DecreaseGold(int value)

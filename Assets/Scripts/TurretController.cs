@@ -24,23 +24,28 @@ public class TurretController : MonoBehaviour
         turretRaycastStartPoint = baseController.turretRaycastStartPoint;
     }
 
+    public void DestroyTurret()
+    {
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
         coolDown -= Time.deltaTime;
 
         int layerMask = 1 << 10;
         RaycastHit hit;
-        if (Physics.Raycast(turretRaycastStartPoint.position, Vector3.right, out hit, AttackRange, layerMask) && coolDown <= 0
+        if (Physics.Raycast(turretRaycastStartPoint.position, transform.right, out hit, AttackRange, layerMask) && coolDown <= 0
             && baseController._base != hit.transform.GetComponent<Damageable>()._base)
         {
-            Debug.DrawRay(turretRaycastStartPoint.position + transform.position / 10, Vector3.right * hit.distance, Color.red);
+            Debug.DrawRay(turretRaycastStartPoint.position + transform.position / 10, transform.right * hit.distance, Color.red);
             hit.transform.GetComponent<Damageable>().GetDamage(DamageAmount);
             coolDown = AttackRate;
             Debug.Log("Attack!!");
         }
         else
         {
-            Debug.DrawRay(turretRaycastStartPoint.position + transform.position / 10, Vector3.right * AttackRange, Color.red);
+            Debug.DrawRay(turretRaycastStartPoint.position + transform.position / 10, transform.right * AttackRange, Color.red);
 
         }
     }

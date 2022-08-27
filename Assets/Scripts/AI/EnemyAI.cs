@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
     {
 
         if (!isBuyEnemy) return;
-        Debug.Log("Buying enemy");
+        //Debug.Log("Buying enemy");
 
         if (currentSoldierData == null)
         {
@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyGoldManager.IsEnoughtGold(needGold) && enemySpawn.IsQueueEmtpty())
         {
-            Debug.Log("Purchased enemy");
+            //Debug.Log("Purchased enemy");
 
             enemyGoldManager.DecreaseGold(currentSoldierData.Cost);
             enemySpawn.StartSpawn(currentSoldierData);
@@ -74,58 +74,72 @@ public class EnemyAI : MonoBehaviour
             isWaitSpawnEnemy = false;
             ChooseBuyItem();
         }
+        else if(enemyGoldManager.IsEnoughtGold(needGold) && !enemySpawn.IsQueueEmtpty())
+        {
+            currentSoldierData = null;
+            isWaitSpawnEnemy = false;
+            ChooseBuyItem();
+        }
+
     }
 
     void SpawnTurret()
     {
-        
-        if (!isBuyTurret) return;
-        Debug.Log("Buying turret");
-        if (currentTurretData == null)
-        {
-            currentTurretData = StageEnemy.Instance.GetCurrentStage().TowerTurrets[0];
-        }
 
-        ItemSlot targetItemSlot = enemyBaseController.GetTurretItemSlot();
-
-        if (!targetItemSlot.isEmpty)
+        if (isBuyTurret)
         {
-            if (ChooseTurret(targetItemSlot.turretData) == null)
+
+            ItemSlot targetItemSlot = enemyBaseController.GetTurretItemSlot();
+
+            if (currentTurretData == null)
             {
-                Debug.Log("Upgrade Tower !!!");
+
+                currentTurretData = StageEnemy.Instance.GetCurrentStage().TowerTurrets[0];
+            }
+
+
+            if (!targetItemSlot.isEmpty)
+            {
+
+                if (ChooseTurret(targetItemSlot.turretData) == null)
+                {
+                    Debug.Log("Upgrade Tower !!!");
+                }
+                else
+                {
+                    currentTurretData = ChooseTurret(targetItemSlot.turretData);
+                }
+            }
+           // Debug.Log("enemyGoldManager: " + enemyGoldManager + "   currentTurretData: " + currentTurretData + " targetItemSlot:    " + targetItemSlot + " turretData   ");
+
+            if (!targetItemSlot.isEmpty &&  enemyGoldManager.IsEnoughtGold(currentTurretData.Cost - targetItemSlot.turretData.EarnedMoneyAmountAfterSell))
+            {
+                enemyTurretManager.SellTurret(targetItemSlot);
+            }
+
+            if (enemyGoldManager.IsEnoughtGold(currentTurretData.Cost))
+            {
+                enemyTurretManager.BuyTurret(targetItemSlot, currentTurretData);
+
+                currentTurretData = null;
+
+                ChooseBuyItem();
+
+
             }
             else
             {
-                currentTurretData = ChooseTurret(targetItemSlot.turretData);
-            }
-        }
+                if (!isWaitTargetGold)
+                {
+                    targetGold = enemyGoldManager.Gold + 30;
+                    isWaitTargetGold = true;
+                }
 
-
-        if (enemyGoldManager.IsEnoughtGold(currentTurretData.Cost))
-        {
-            Debug.Log("Purchased turret");
-            if(!targetItemSlot.isEmpty) enemyTurretManager.SellTurret(targetItemSlot);
-
-            enemyTurretManager.BuyTurret(targetItemSlot, currentTurretData);
-            isBuyTurret = false;
-            currentTurretData = null;
-            ChooseBuyItem();
-            return;
-        }
-        else
-        {
-            if (!isWaitTargetGold)
-            {
-                targetGold = enemyGoldManager.Gold + 50;
-                isWaitTargetGold = true;
-            }
-
-
-            if (enemyGoldManager.Gold >= targetGold)
-            {
-                isBuyTurret = false;
-                isWaitTargetGold = false;
-                ChooseBuyItem();
+                if (enemyGoldManager.Gold >= targetGold)
+                {
+                    isWaitTargetGold = false;
+                    ChooseBuyItem();
+                }
             }
         }
     }
@@ -139,8 +153,8 @@ public class EnemyAI : MonoBehaviour
 
     void ChooseBuyItem()
     {
-        int choosedItem = UnityEngine.Random.Range(0, 2);
 
+        int choosedItem = UnityEngine.Random.Range(0, 2);
         switch (choosedItem)
         {
             case 0:
@@ -163,7 +177,7 @@ public class EnemyAI : MonoBehaviour
 
         foreach (var data in StageEnemy.Instance.GetCurrentStage().TowerTurrets)
         {
-            if(currentTurretData.Cost < data.Cost)
+            if (currentTurretData.Cost < data.Cost)
             {
                 return data;
             }
