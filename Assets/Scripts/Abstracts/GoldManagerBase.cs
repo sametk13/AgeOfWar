@@ -7,6 +7,7 @@ public abstract class GoldManagerBase : MonoBehaviour
 {
     public int Gold;
     public Action OnGoldUpdated;
+    public Action<int> OnGoldIncreased;
 
     public bool isEarnGold = true;
     public float EarnGoldDelay = 5f;
@@ -19,6 +20,7 @@ public abstract class GoldManagerBase : MonoBehaviour
     public void IncreaseGold(int value)
     {
         Gold += value;
+        OnGoldIncreased?.Invoke(value);
         OnGoldUpdated?.Invoke();
     }
 

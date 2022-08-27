@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d47dd2a7f97bc4428fde46eee506e9b, type: 3}
-  m_Name: StandartTurret
+  m_Name: StandartTurret 1
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d00cfa5a9fac108449ab5e5bc97b1f6f, type: 3}
   Prefab: {fileID: 9197058377062464972, guid: 07bf02fb600f20b48a781e242a7e1988, type: 3}
   AttackRange: 15
   Damage: 10
-  Cost: 200
+  Cost: 300
   EarnedMoneyAmountAfterSell: 150
   AttackCooldown: 4
