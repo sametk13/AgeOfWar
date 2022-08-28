@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b8ef3224a1f461b459b45eecad87f58e, type: 3}
-  Prefab: {fileID: 8239182099929247408, guid: 59ee972b95e488545983966a15e4fc1d, type: 3}
+  Prefab: {fileID: 8239182099929247408, guid: 951227166dab28646a272f4573d3e78a, type: 3}
   Health: 30
   Damage: 10
-  AttackRange: 4
+  AttackRange: 5
   AttackRate: 1
   Cost: 50
   DeathRewardGold: 75
-  SpawnDelayTime: 4
+  SpawnDelayTime: 2

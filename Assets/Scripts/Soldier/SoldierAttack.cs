@@ -7,6 +7,7 @@ public  class SoldierAttack : MonoBehaviour
     public SoldierData soldierData;
 
     SoldierController soldierController;
+    SoldierAnimationController soldierAnimation;
 
     public float AttackRange;
     public float DamageAmount;
@@ -21,6 +22,7 @@ public  class SoldierAttack : MonoBehaviour
         coolDown = AttackRate;
 
         soldierController = GetComponent<SoldierController>();
+        soldierAnimation = GetComponent<SoldierAnimationController>();
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public  class SoldierAttack : MonoBehaviour
             hit.transform.GetComponent<Damageable>().GetDamage(DamageAmount);
             coolDown = AttackRate;
             Debug.Log("Attack!!");
+            soldierAnimation.Attack();
         }
     }
 }

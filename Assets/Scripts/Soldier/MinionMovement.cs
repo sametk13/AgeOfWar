@@ -7,18 +7,25 @@ public class MinionMovement : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] float stopRange = 1.5f;
     [SerializeField] Transform checkRaycastTransform;
+    SoldierAnimationController soldierAnimation;
 
     float defaultSpeed;
 
     private void Start()
     {
         defaultSpeed = speed;
+        soldierAnimation = GetComponent<SoldierAnimationController>();
     }
     private void Update()
     {
         if (!IsItEmtyInFront())
         {
             Move();
+            soldierAnimation.Walk(true);
+        }
+        else
+        {
+            soldierAnimation.Walk(false);
         }
     }
 

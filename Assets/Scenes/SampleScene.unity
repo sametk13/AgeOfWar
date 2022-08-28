@@ -2977,7 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eccd3f7cb11acd4a8ee1b66cd2da242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 50
+  Gold: 0
   isEarnGold: 1
   EarnGoldDelay: 2.5
   EarnGoldAmount: 5
@@ -3315,11 +3315,11 @@ RectTransform:
   m_Father: {fileID: 2027571164}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -780.8, y: 460}
-  m_SizeDelta: {x: 248.375, y: 101.602}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 61.4, y: -30}
+  m_SizeDelta: {x: 248.375, y: 101.60199}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1001 &377921409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4258,11 +4258,11 @@ RectTransform:
   m_Father: {fileID: 370836419}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -19.1, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &459386872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7213,7 +7213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -49.7, y: 3.3}
+  m_AnchoredPosition: {x: -51.3, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &765908872
@@ -11168,9 +11168,9 @@ MonoBehaviour:
   stages:
   - StageName: 'Stage 1 '
     SoldierDatas:
+    - {fileID: 11400000, guid: d6a3068ce1601dc4abc677e724bf43ad, type: 2}
     - {fileID: 11400000, guid: 557b4b080656b3743a010ed1eeb6a470, type: 2}
     - {fileID: 11400000, guid: 2d41ea3c4dbca4e44817ce7cf2278c94, type: 2}
-    - {fileID: 11400000, guid: d6a3068ce1601dc4abc677e724bf43ad, type: 2}
     TowerTurrets:
     - {fileID: 11400000, guid: eb3b8d450c111de44ace51e9569851eb, type: 2}
     BaseDatabase: {fileID: 11400000, guid: 4596d81db2661fb4381b680a7dcb6b9e, type: 2}
@@ -17397,7 +17397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8dbacf06ff26a4e947046245a05c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 50
+  Gold: 4444
   isEarnGold: 1
   EarnGoldDelay: 2.5
   EarnGoldAmount: 5
@@ -18994,7 +18994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 47.58779, y: 3.788}
+  m_AnchoredPosition: {x: 54.5, y: 2.7}
   m_SizeDelta: {x: 102.6683, y: 48.893}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1783481352

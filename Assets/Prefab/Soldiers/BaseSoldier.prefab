@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a8cc6177497e941adadb4e97796178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   stopRange: 1.5
   checkRaycastTransform: {fileID: 6708300423299911670}
 --- !u!54 &3572323932330116623
