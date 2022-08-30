@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MinionMovement : MonoBehaviour
 {
+    public SoldierData soldierData;
+
     [SerializeField] float speed = 1f;
     [SerializeField] float stopRange = 1.5f;
     [SerializeField] Transform checkRaycastTransform;
@@ -13,6 +15,7 @@ public class MinionMovement : MonoBehaviour
 
     private void Start()
     {
+        speed = soldierData.Speed;
         defaultSpeed = speed;
         soldierAnimation = GetComponent<SoldierAnimationController>();
     }

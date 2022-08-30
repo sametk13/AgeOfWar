@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateGoldText(int gold)
     {
-        goldText.SetText("$" + gold);
+        goldText.SetText("" + gold);
     }
 
 
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
             SoldierData currentData = StageManager.Instance.GetCurrentStage().SoldierDatas[i];
             GameObject currentCard = Instantiate(buttonCardPrefab, SoldierGridLayout.transform);
             currentCard.transform.GetChild(0).GetComponent<Image>().sprite = currentData.sprite;
-            currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "$";
+            currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "";
             currentCard.GetComponent<ItemButton>().soldierData = currentData;
         }
         GameObject backButtonCard = Instantiate(backButtonCardPrefab, SoldierGridLayout.transform);
@@ -80,7 +80,7 @@ public class UIManager : MonoBehaviour
             TowerTurretData currentData = StageManager.Instance.GetCurrentStage().TowerTurrets[i];
             GameObject currentCard = Instantiate(turretCardPrefab, TurretGridLayout.transform);
             currentCard.transform.GetChild(0).GetComponent<Image>().sprite = currentData.sprite;
-            currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "$";
+            currentCard.GetComponentInChildren<TextMeshProUGUI>().text = currentData.Cost + "";
             currentCard.GetComponent<DragDrop>().TurretData = currentData;
         }
         GameObject backButtonCard = Instantiate(backButtonCardPrefab, TurretGridLayout.transform);

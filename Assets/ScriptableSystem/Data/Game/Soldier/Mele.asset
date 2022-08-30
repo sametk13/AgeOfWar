@@ -16,6 +16,7 @@ MonoBehaviour:
   Prefab: {fileID: 8239182099929247408, guid: ce0ae397c105e5d42adb5eaaaa1aa244, type: 3}
   Health: 50
   Damage: 8
+  Speed: 2.5
   AttackRange: 2
   AttackRate: 1
   Cost: 25

@@ -16,6 +16,10 @@ public class SoldierController : Damageable
         soldierAttack.soldierData = soldierData;
         animationController = gameObject.AddComponent<SoldierAnimationController>();
 
+
+        if(GetComponent<MinionMovement>() == null) gameObject.AddComponent<MinionMovement>();
+        GetComponent<MinionMovement>().soldierData = soldierData;
+
         deathRewardGold = soldierData.DeathRewardGold;
         Health = soldierData.Health;
         MaxHealth = Health;
