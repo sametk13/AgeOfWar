@@ -8,10 +8,17 @@ public class BaseController : Damageable
     ProgressBarController progressBar;
     public Transform turretRaycastStartPoint;
 
+    GoldManager goldManager;
+
     ItemSlot worstTurret;
+
+    [Header("Tower Settings")]
+    [SerializeField] List<TowerSlot> turretSlots = new List<TowerSlot>();
+    int turretTowerLevel = 1;
 
     private void Start()
     {
+        goldManager = GetComponent<GoldManager>();
         progressBar = GetComponentInChildren<ProgressBarController>();
         Health = baseData.Health;
         MaxHealth = Health;
@@ -21,10 +28,10 @@ public class BaseController : Damageable
     public override void GetDamage(float damageAmount)
     {
         base.GetDamage(damageAmount);
-        progressBar.UpdateProgressBar(Health,MaxHealth);
+        progressBar.UpdateProgressBar(Health, MaxHealth);
     }
 
-    public ItemSlot GetTurretItemSlot() 
+    public ItemSlot GetTurretItemSlot()
     {
         ItemSlot[] itemSlots = GetComponentsInChildren<ItemSlot>();
         foreach (var itemSlot in itemSlots)
@@ -42,5 +49,33 @@ public class BaseController : Damageable
         }
         return worstTurret;
     }
+
+    public void UpgradeTurretTower()
+    {
+        if (turretSlots.Count <= turretTowerLevel)
+        {
+            Debug.Log("Max Tower Level !!!");
+        }
+        else if (goldManager.IsEnoughtGold(turretSlots[turretTowerLevel].cost))
+        {
+            goldManager.DecreaseGold(turretSlots[turretTowerLevel].cost);
+            turretTowerLevel++;
+            OpenTurretSlot();          
+        }
+    }
+    void OpenTurretSlot()
+    {
+        for (int i = 0; i < turretTowerLevel; i++)
+        {
+            turretSlots[i].turretSlot.SetActive(true);
+        }
+    }
+}
+
+[System.Serializable]
+public class TowerSlot
+{
+    public GameObject turretSlot;
+    public int cost;
 }
 
